@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { GET_SUPPORTS, SUPPORTS_ERROR } from "./types";
+import { GET_SUPPORTS, SUPPORTS_ERROR, SET_FILTER } from "./types";
 
 //Get all Supports
 export const getSupports = () => async dispatch => {
@@ -15,5 +15,20 @@ export const getSupports = () => async dispatch => {
       type: SUPPORTS_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+  }
+};
+
+//Set search filter
+export const search = filterValue => {
+  try {
+    return {
+      type: SET_FILTER,
+      filterValue
+    };
+  } catch (err) {
+    return {
+      type: SUPPORTS_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    };
   }
 };

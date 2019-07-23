@@ -13,6 +13,20 @@ const SupportList = ({ getSupports, support: { supports, loading } }) => {
       <div className='ui segment'>
         <h1>Support</h1>
         <h4>Find physicians and allied health professionals in your area</h4>
+        <div className='search-filters'>
+          <select class='ui dropdown'>
+            <option value='0'>Province</option>
+            <option value='1'>Ontario</option>
+            <option value='2'>British Columbia</option>
+          </select>
+          <select class='ui dropdown'>
+            <option value='0'>Condition</option>
+            <option value='1'>MRSA</option>
+            <option value='2'>C.difficile</option>
+            <option value='3'>Surgical Site Infections</option>
+          </select>
+        </div>
+
         <div className='support-wrapper'>
           {supports.map((support, key) => (
             <div key={support.id} className='ui card'>
