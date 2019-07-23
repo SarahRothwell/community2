@@ -12,6 +12,7 @@ import SupportList from "./components/support/SupportList";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Blog from "./components/resources/Blog";
+import BlogPost from "./components/resources/BlogPost";
 import Alert from "./components/layout/Alert";
 import setAuthToken from "./utils/setAuthToken";
 
@@ -33,6 +34,9 @@ const App = () => {
           <Route exact path='/' component={Landing} />
           <div className='ui-container'>
             <Switch>
+              <Route exact path='/blog' component={Blog} />
+              <Route path='/blog/:page' exact component={Blog} />
+              <Route path='/blog/posts/:post' component={BlogPost} />
               <Route exact path='/support' component={SupportList} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />

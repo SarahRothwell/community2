@@ -14,3 +14,8 @@ export const LOGOUT = "LOGOUT";
 //Support
 export const GET_SUPPORTS = "GET_SUPPORTS";
 export const SUPPORTS_ERROR = "SUPPORTS_ERROR";
+
+//ButterCMS Blog
+//export const GET_POSTS = "GET_POSTS";
+//export const GET_POST = "GET_POST";
+//export const BLOG_ERROR = "BLOG_ERROR";
