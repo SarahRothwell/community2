@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getSupports } from "../../actions/support";
+import SearchBar from "./SearchBar";
 
 const SupportList = ({ getSupports, support: { supports, loading } }) => {
   useEffect(() => {
@@ -13,21 +14,11 @@ const SupportList = ({ getSupports, support: { supports, loading } }) => {
       <div className='ui segment'>
         <h1>Support</h1>
         <h4>Find physicians and allied health professionals in your area</h4>
-        <div className='search-filters'>
-          <select class='ui dropdown'>
-            <option value='0'>Province</option>
-            <option value='1'>Ontario</option>
-            <option value='2'>British Columbia</option>
-          </select>
-          <select class='ui dropdown'>
-            <option value='0'>Condition</option>
-            <option value='1'>MRSA</option>
-            <option value='2'>C.difficile</option>
-            <option value='3'>Surgical Site Infections</option>
-          </select>
+        <div className='ui container'>
+          <SearchBar />
         </div>
 
-        <div className='support-wrapper'>
+        <div className='ui container support-wrapper'>
           {supports.map((support, key) => (
             <div key={support.id} className='ui card'>
               <p className='header'>{support.name}</p>
@@ -58,10 +49,11 @@ SupportList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  support: state.support
+  support: state.support,
+  searchFilter: state.searchFilter
 });
 
 export default connect(
   mapStateToProps,
-  { getSupports }
+  { getSupports, search }
 )(SupportList);

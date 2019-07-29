@@ -3,7 +3,7 @@ import { GET_SUPPORTS, SUPPORTS_ERROR, SET_FILTER } from "../actions/types";
 const initialState = {
   supports: [],
   support: null,
-  filterValue: "",
+  searchFilter: {},
   loading: true,
   error: {}
 };
@@ -24,14 +24,10 @@ export default function(state = initialState, action) {
         error: payload,
         loading: false
       };
-    case SET_FILTER:
-      const { filterValue } = action;
-      // const filteredSupports = state.supports.filter((filterValue)=>) //STILL NEED TO FINISH
-
+    case SET_FILTER_SUCCESS:
       return {
         ...state,
-        // supports: filteredSupports,
-        filterValue: action,
+        searchFilter: [action.location, action.condition],
         loading: false
       };
     default:
